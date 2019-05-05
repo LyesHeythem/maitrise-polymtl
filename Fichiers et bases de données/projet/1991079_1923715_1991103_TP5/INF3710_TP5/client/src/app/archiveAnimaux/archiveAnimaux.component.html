@@ -1,0 +1,34 @@
+<div id="archiveAnimaux" style="text-align: left">
+  <h1> Archive animaux</h1>
+  <ul style="list-style: none;">
+    <div id="ht" style="text-align:center" *ngIf="route != '/informationsAnimaux'">
+      <table id="ht" align="center" border="1" width="350">
+        <th> Id de l'animal</th>
+        <th> Id de la clinique</th>
+        <th> Id du propriétaire</th>
+        <th> nom</th>
+        <th> type</th>
+        <th> description</th>
+        <th> Date de Naissance</th>
+        <th> Date d'inscription à la clinique</th>
+        <th> Etat Actuel</th>
+        <tbody>
+          <tr *ngFor="let animal of animaux">
+            <td> {{animal.idanimal}}</td>
+            <td> {{animal.idclin}} </td>
+            <td> {{animal.idprop}} </td>
+            <td> {{animal.nom}} </td>
+            <td> {{animal.type}} </td>
+            <td> {{animal.description}} </td>
+            <td> {{animal.datenaissance}} </td>
+            <td> {{animal.dateinscriptionclinique}} </td>
+            <td> {{animal.etatactuel}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ul>
+  </div>
+
+
+

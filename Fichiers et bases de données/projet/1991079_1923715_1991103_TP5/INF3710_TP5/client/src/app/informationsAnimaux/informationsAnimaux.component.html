@@ -1,0 +1,37 @@
+<div id="informationsAnimaux" style="text-align: left">
+  <h1> Informations animaux</h1>
+  <ul style="list-style: none;">
+    Le nom de l'animal contient :
+    <li><input type="text" class="form-control col-md-4" #nom></li>
+    <button type="button" class="btn btn-primary" (click)="getInfosAnimal(nom.value)"> Rechercher les informations sur l'animal</button>
+    <div id="ht" style="text-align:center" *ngIf="route != '/informationsAnimaux'">
+      <table id="ht" align="center" border="1" width="350">
+        <th> Id de l'animal</th>
+        <th> Id de la clinique</th>
+        <th> Id du propriétaire</th>
+        <th> nom</th>
+        <th> type</th>
+        <th> description</th>
+        <th> Date de Naissance</th>
+        <th> Date d'inscription à la clinique</th>
+        <th> Etat Actuel</th>
+        <tbody>
+          <tr *ngFor="let animal of animal">
+            <td> {{animal.idanimal}}</td>
+            <td> {{animal.idclin}} </td>
+            <td> {{animal.idprop}} </td>
+            <td> {{animal.nom}} </td>
+            <td> {{animal.type}} </td>
+            <td> {{animal.description}} </td>
+            <td> {{animal.datenaissance}} </td>
+            <td> {{animal.dateinscriptionclinique}} </td>
+            <td> {{animal.etatactuel}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ul>
+  </div>
+
+
+

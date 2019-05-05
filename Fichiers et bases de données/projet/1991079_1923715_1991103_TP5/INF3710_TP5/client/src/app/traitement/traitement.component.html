@@ -1,0 +1,52 @@
+<div id="traitement" style="text-align: left">
+  <h1> Traitement</h1>
+  <ul style="list-style: none;">
+    Id Animal (champ obligatoire) : <li>
+      <select #IdAnimal>
+        <option ></option>
+        <option *ngFor="let animaux of animaux">{{animaux.idanimal}}</option>
+      </select>
+      </li>
+       Id Clinique (champ obligatoire) : <li>
+      <select #IdClin>
+        <option ></option>
+        <option *ngFor="let clinique of clinique">{{clinique.idclin}}</option>
+      </select>
+      </li>
+    <button type="button" class="btn btn-primary" (click)="getTraitement(IdAnimal.value, IdClin.value)"> Voir les traitements</button>
+    <button type="button" class="btn btn-primary" (click)="getFacture(IdAnimal.value, IdClin.value)"> Voir la facture</button>
+    <div id="ht" style="text-align:center" *ngIf="route != '/traitement'">
+      <table id="ht" align="center" border="1" width="350">
+        <th> Traitement ID</th>
+        <th> description</th>
+        <th> cout</th>
+        <th> quantité</th>
+        <th> date de début</th>
+        <th> date de fin</th>
+        <tbody>
+          <tr *ngFor="let traitement of traitement">
+            <td> {{traitement.idtrait}}</td>
+            <td> {{traitement.description}} </td>
+            <td> {{traitement.cout}} </td>
+            <td> {{traitement.quantite}} </td>
+            <td> {{traitement.datedebut}} </td>
+            <td> {{traitement.datefin}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="fac" style="text-align:center" *ngIf="route != '/traitement/facture'">
+      <table id="ht" align="center" border="1" width="350">
+        <th> Facture totale</th>
+        <tbody>
+          <tr *ngFor="let facture of facture">
+            <td> {{facture.sum}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ul>
+  </div>
+
+
+

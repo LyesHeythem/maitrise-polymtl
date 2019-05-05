@@ -1,0 +1,48 @@
+
+<div id="hotel" style="text-align: left">
+  <h1> Animaux</h1>
+  <div id="error" class="alert alert-danger" role="alert" *ngIf="duplicateError">
+    Insertion sur une cle primaire qui existe deja
+  </div>
+    <ul style="list-style: none;">
+      Id Animal (champ obligatoire de la forme ANIXXX) : <li><input type="text" class="form-control col-md-4" #IdAnimal></li>
+      Id Clinique (champ obligatoire) : <li>
+      <select #IdClin>
+        <option ></option>
+        <option *ngFor="let clinique of clinique">{{clinique.idclin}}</option>
+      </select>
+      </li>
+      Id Propriétaire (champ obligatoire) : <li>
+      <select #IdProp>
+        <option ></option>
+        <option *ngFor="let proprietaire of proprietaire">{{proprietaire.idprop}}</option>
+      </select>
+      </li>
+      nom : <li><input type="text" class="form-control col-md-4" #nom></li>
+      type : <li><input type="text" class="form-control col-md-4" #type></li>
+      description : <li><input type="text" class="form-control col-md-4" #description></li>
+      date de Naissance (champ obligatoire) : <li><input type="date" class="form-control col-md-4" #dateNaissance></li>
+      date d'Inscription à la Clinique (champ obligatoire) : <li><input type="date" class="form-control col-md-4" #dateInscriptionClinique></li>
+      Etat actuel : <li><input type="text" class="form-control col-md-4" #EtatActuel></li>
+    <li>
+      <button type="button" class="btn btn-primary" (click)="insertAnimal(IdAnimal.value, IdClin.options[IdClin.selectedIndex].value, IdProp.options[IdProp.selectedIndex].value, nom.value, type.value, description.value, dateNaissance.value, dateInscriptionClinique.value, EtatActuel.value); getAnimauxId()"> Ajouter Animal</button>
+      <button type="button" class="btn btn-primary" (click)="modifyAnimal(IdAnimal.value, IdClin.options[IdClin.selectedIndex].value, IdProp.options[IdProp.selectedIndex].value, nom.value, type.value, description.value, dateNaissance.value, dateInscriptionClinique.value, EtatActuel.value)"> Modifier Animal</button>
+    </li>
+    </ul>
+    
+    <ul style="list-style: none;">
+       Id Animal  (champ obligatoire): <li>
+      <select #IdAnimal1>
+        <option ></option>
+        <option *ngFor="let animaux of animaux">{{animaux.idanimal}}</option>
+      </select>
+      </li>
+       Id Clinique  (champ obligatoire): <li>
+      <select #IdClin1>
+        <option ></option>
+        <option *ngFor="let clinique of clinique">{{clinique.idclin}}</option>
+      </select>
+      </li>
+    <li><button type="button" class="btn btn-primary" (click)="deleteAnimal(IdAnimal1.options[IdAnimal1.selectedIndex].value, IdClin1.options[IdClin1.selectedIndex].value); getAnimauxId()"> Supprimer Animal</button></li>
+    </ul>
+  </div>

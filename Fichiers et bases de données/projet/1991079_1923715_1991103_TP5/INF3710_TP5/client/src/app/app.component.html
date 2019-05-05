@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+
+<nav class="navbar navbar-dark bg-dark mb-5">
+    <a class="navbar-brand title" href="/">INF3710-TP5</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/animaux">Animaux</a>
+        <a class="nav-item nav-link active" routerLink="/traitement">Traitement</a>
+        <a class="nav-item nav-link active" routerLink="/informationsAnimaux">Informations animaux</a>
+        <a class="nav-item nav-link active" routerLink="/archiveAnimaux">Archive animaux</a>
+      </div>
+    </div>
+  </nav>
+
+<div style="text-align:center">
+  <router-outlet></router-outlet>
+
+  <div id="ht" style="text-align:center" *ngIf="route != '/clinique'">
+    Bienvenue sur le site de gestion de clinique vétérinaire
+    <br />
+    Vous pouvez insérer, supprimer ou modifier les informations d’un animal dans l'onglet "Animaux".
+    <br />
+    Vous pouvez voir la liste des traitements d’un animal particulier et générer la facture totale des traitements d’un animal donné dans l'onglet "Traitement".
+    <br />
+    Vous pouvez rechercher les informations d’un animal en utilisant son nom ou une partie de son nom dans l'onglet "Informations animaux".
+    <br />
+    Enfin, vous pouvez voir l'archive des animaux qui ont été supprimés de la base de données dans l'onglet "Archive animaux".
+  </div>
+</div>
+
+

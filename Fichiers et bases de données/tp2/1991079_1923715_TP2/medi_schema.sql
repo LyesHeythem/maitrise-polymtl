@@ -1,0 +1,77 @@
+SET search_path = mediDB;
+
+DROP SCHEMA IF EXISTS MEDIDB CASCADE;
+
+CREATE SCHEMA MEDIDB;
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Patient(
+Patientno VARCHAR(10) NOT NULL,
+nas VARCHAR(10) UNIQUE NOT NULL,
+pname VARCHAR(40) NOT NULL,
+address VARCHAR(50),
+phoneno VARCHAR(10),
+DoB DATE,
+PRIMARY KEY (Patientno));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Doctor(
+Doctorid VARCHAR(10) NOT NULL,
+dname VARCHAR(40) NOT NULL,
+DoB DATE,
+address VARCHAR(50),
+phoneno VARCHAR(10),
+salary NUMERIC(15,3),
+PRIMARY KEY (Doctorid),
+CONSTRAINT Sal CHECK(salary>=100000));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Appointment(
+Apptno VARCHAR(10) NOT NULL,
+Patientno VARCHAR(10) NOT NULL,
+Doctorid VARCHAR(10) NOT NULL,
+appDate DATE,
+appTime TIME,
+PRIMARY KEY (Apptno),
+FOREIGN KEY (Patientno) REFERENCES Patient(Patientno),
+FOREIGN KEY (Doctorid) REFERENCES Doctor(Doctorid));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Medical(
+Doctorid VARCHAR(10) NOT NULL,
+Overtimerate NUMERIC(10,3),
+PRIMARY KEY (Doctorid),
+FOREIGN KEY (Doctorid) REFERENCES Doctor(Doctorid));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Specialist(
+Doctorid VARCHAR(10) NOT NULL,
+Fieldarea VARCHAR(40),
+PRIMARY KEY (Doctorid),
+FOREIGN KEY (Doctorid) REFERENCES Doctor(Doctorid));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Bill(
+Billno VARCHAR(10) NOT NULL,
+Doctorid VARCHAR(10) NOT NULL,
+total NUMERIC(10,3),
+PRIMARY KEY (Billno),
+FOREIGN KEY (Doctorid) REFERENCES Doctor(Doctorid) ON DELETE RESTRICT);
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Payment(
+Paymentno VARCHAR(10) NOT NULL,
+Patientno VARCHAR(10) NOT NULL,
+details VARCHAR(50),
+paymethod VARCHAR(20),
+PRIMARY KEY (Paymentno),
+FOREIGN KEY (Patientno) REFERENCES Patient(Patientno));
+
+CREATE TABLE IF NOT EXISTS MEDIDB.Paybill(
+Paymentno VARCHAR(10) NOT NULL,
+Billno VARCHAR(10) NOT NULL,
+PRIMARY KEY (Paymentno,Billno),
+FOREIGN KEY (Paymentno) REFERENCES Payment(Paymentno),
+FOREIGN KEY (Billno) REFERENCES Bill(Billno));
+
+
+
+
+
+
+
+
+
